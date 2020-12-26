@@ -4,7 +4,7 @@ This is the project of University of Paris in 2020/21. The main purpose is to im
 
 ## Introduction
 Pet Rescue Saga is very popular game developed by King.com Limited in 2012. 
-This game Based on SameGame where the player selects matching adjacent boxes of the same colour to clear the game board, freeing animals atop the boxes once they reach the bottom. 
+This game Based on SameGame where the player selects matching adjacent boxes of the same colour to clear the game board, freeing animals at top the boxes once they reach the bottom. 
 In this POO Students' project, we will develop a simple version of a similar game in a Java development environment, modelled on the rules of this game.
 
    ###Development tools
@@ -12,7 +12,7 @@ In this POO Students' project, we will develop a simple version of a similar gam
    - Github
    ###Developers
    - YE Junli, 21962349, junli.ye@etu.u-paris.fr
-   - LI Songqiao, 22000000, songqiao.li@etu.u-paris.fr
+   - LI Songqiao, 22013160, songqiao.li@etu.u-paris.fr
 
 ## Getting started: download and configuration
 1) Download this respectory in your own machine or clone it with the following github SSH key: </br>
