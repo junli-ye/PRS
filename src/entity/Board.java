@@ -28,8 +28,9 @@ public class Board {
 
     /**
      * Print this board for internal checks
+     * Should be deleted
      */
-    protected void print(){
+    public void print(){
         for(int i=0; i<WIDTH; i++){
             for(int j=0; j<HEIGHT; j++){
                 System.out.print(blocks[i][j]+"   ");

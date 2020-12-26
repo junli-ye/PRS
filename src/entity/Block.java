@@ -10,11 +10,15 @@ import java.util.Objects;
 abstract class Block<T> {
     protected T element;
 
-    T getElement() {
+    public T getElement() {
         return this.element;
     }
 
-    void T(T t) {
+    public void setElement(T t) {
+        this.element=t;
+    }
+
+    public void T(T t) {
         this.element=t;
     }
 
