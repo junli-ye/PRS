@@ -15,6 +15,14 @@ public class Game {
     }
 
     /**
+     * Getter
+     * @return
+     */
+    public Board getBoard() {
+        return board;
+    }
+
+    /**
      * Print this board for internal checks
      * Should be deleted
      */
@@ -23,19 +31,37 @@ public class Game {
     }
 
     /**
-     * Swap cubes
+     * Eliminate
      */
-    private void swithTwoBlocks(NormalBlock b1, NormalBlock b2) {
-        Color tmp = b1.getElement();
-        b1.setElement(b2.getElement());
-        b2.setElement(tmp);
+    private void eliminate(boolean[][] range) {
+        Object[][] blocks = this.board.getBlocks();
+        // to insert Exception about size confirmation
+
+        for(int i=0; i<blocks.length; i++) {
+            for(int j=0; j<blocks[i].length; j++) {
+                if(range[i][j]) {
+                    // How to call Eliminate???
+                }
+            }
+        }
     }
 
     /**
-     * Eliminate
+     * Eliminate 范围
      */
-    private void eliminate() {
-//        ... TODO with hashmap
+    private boolean[][] rangeOfEliminate(Location l) {
+        boolean[][] range = new boolean[board.getWidth()][board.getHeight()];
+        NormalBlock b = (NormalBlock) board.getBlocks()[l.getX()][l.getY()];
+
+        for(int i=0; i<board.getWidth(); i++) {
+            if (board.getBlocks()[l.getX()][i].equals(b)) range[l.getX()][i] = true;
+        }
+
+        for(int j=0; j<board.getHeight(); j++) {
+            if (board.getBlocks()[j][l.getY()].equals(b)) range[j][l.getY()] = true;
+        }
+
+        return range;
     }
 
     /**
@@ -43,6 +69,13 @@ public class Game {
      */
     private void fall( ) {
 //        ... TODO
+    }
+
+    /**
+     * Over?
+     */
+    public boolean isWin() {
+        return true;
     }
 
 }

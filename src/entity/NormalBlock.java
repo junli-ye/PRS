@@ -19,4 +19,9 @@ public class NormalBlock extends Block<Color> {
     public String toString() {
         return " "+super.toString()+" ";
     }
+
+    @Override
+    public void eliminate() {
+        this.element=null;
+    }
 }

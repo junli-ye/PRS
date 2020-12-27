@@ -22,8 +22,16 @@ public class Board {
         }
     }
 
-    protected Object[][] getBlocks(){
+    public Object[][] getBlocks(){
         return this.blocks;
+    }
+
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    public int getHeight() {
+        return HEIGHT;
     }
 
     /**

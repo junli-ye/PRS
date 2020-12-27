@@ -29,11 +29,9 @@ abstract class Block<T> {
     public abstract boolean canSelect();
 
     /**
-     * Main functions of this program
      * This method is activated when the user selects a square, causing the square to be eliminated
      */
-    public void select(){
-
+    public void eliminate() {
     }
 
     @Override
