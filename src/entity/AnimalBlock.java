@@ -5,19 +5,25 @@ package entity;
  * @description:
  * @author: Junli YE
  */
-public class AnimalBlock extends Block<Animal> {
+public class AnimalBlock extends Block {
+    private final Animal animal;
 
     @Override
     public boolean canSelect() {
         return false;
     }
 
-    public AnimalBlock(Animal animal) {
-        element=animal;
+    public AnimalBlock(Color color,Animal animal) {
+       super(color);
+       this.animal=animal;
     }
 
     @Override
     public String toString() {
-        return "{"+this.element.toString()+"}";
+        return "{"+this.animal.toString()+"}";
+    }
+
+    public Animal getAnimal(){
+        return this.animal;
     }
 }
