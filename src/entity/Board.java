@@ -22,9 +22,11 @@ public class Board {
         }
     }
 
-    public Object[][] getBlocks(){
+    public Block[][] getBlocks(){
         return this.blocks;
     }
+
+    public void setBlocks(Block[][] blocks) { this.blocks=blocks; }
 
     public int getWidth() {
         return WIDTH;

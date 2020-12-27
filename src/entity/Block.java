@@ -7,19 +7,19 @@ import java.util.Objects;
  * @description:
  * @author: Junli YE
  */
-abstract class Block<T> {
-    protected T element;
+public abstract class Block {
+    protected Color color;
 
-    public T getElement() {
-        return this.element;
+    public Color getColor() {
+        return this.color;
     }
 
-    public void setElement(T t) {
-        this.element=t;
+    public void setColor(Color c) {
+        this.color=c;
     }
 
-    public void T(T t) {
-        this.element=t;
+    public Block(Color c) {
+        this.color=c;
     }
 
     /**
@@ -36,7 +36,7 @@ abstract class Block<T> {
 
     @Override
     public String toString() {
-        return this.element.toString();
+        return this.color.toString();
     }
 
     @Override
@@ -44,11 +44,6 @@ abstract class Block<T> {
         if(this == obj) return true;
         if(obj == null) return false;
         Block blk = (Block)obj;
-        return this.element == blk.element;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(element);
+        return this.color == blk.color;
     }
 }

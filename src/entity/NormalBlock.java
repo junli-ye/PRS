@@ -5,14 +5,14 @@ package entity;
  * @description:
  * @author: Junli YE
  */
-public class NormalBlock extends Block<Color> {
+public class NormalBlock extends Block {
+    public NormalBlock(Color c) {
+        super(c);
+    }
+
     @Override
     public boolean canSelect() {
         return true;
-    }
-
-    public NormalBlock (Color color){
-        this.element=color;
     }
 
     @Override
@@ -22,6 +22,6 @@ public class NormalBlock extends Block<Color> {
 
     @Override
     public void eliminate() {
-        this.element=null;
+        this.color=null;
     }
 }
