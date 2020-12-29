@@ -23,10 +23,6 @@ public class Game {
         return board;
     }
 
-    /**
-     * Print this board for internal checks
-     * Should be deleted
-     */
     public void print() {
         this.board.print();
     }
@@ -34,7 +30,8 @@ public class Game {
     /**
      * Eliminate
      */
-    private void eliminate(boolean[][] range) {
+    public void eliminate(int x, int y) {
+        boolean[][] range = rangeOfEliminate(new Location(x,y));
         Block[][] blocks = board.getBlocks();
 
         for(int i=0; i<blocks.length; i++) {
@@ -90,9 +87,8 @@ public class Game {
     public boolean isWin() {
         Block[][] blocks = board.getBlocks();
         for(int i=0; i<board.getWidth(); i++) {
-            if (blocks[board.getWidth()-1][i] instanceof NormalBlock) return false;
+            if (blocks[i][board.getWidth()-1] instanceof NormalBlock) return false;
         }
         return true;
     }
-
 }
