@@ -48,17 +48,34 @@ public class Game {
     /**
      * Range of elimination
      */
-    private boolean[][] rangeOfEliminate(Location l) {
+    public boolean[][] rangeOfEliminate(Location l) {
         boolean[][] range = new boolean[board.getWidth()][board.getHeight()];
         Block[][] blocks = board.getBlocks();
         NormalBlock b = (NormalBlock)blocks[l.getX()][l.getY()];
 
-        for(int i=0; i<board.getWidth(); i++) {
-            if (blocks[l.getX()][i].equals(b) && blocks[l.getX()][i].canSelect()) range[l.getX()][i] = true;
+        // self
+        if(blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)
+                || blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b))
+            range[l.getX()][l.getY()] = true;
+
+        // right
+        for(int r=l.getY()+1; r<board.getWidth(); r++) {
+            if (blocks[l.getX()][r].equals(b) && blocks[l.getX()][r].canSelect() && blocks[l.getX()][r-1].equals(b)) range[l.getX()][r] = true;
         }
 
-        for(int j=0; j<board.getHeight(); j++) {
-            if (blocks[j][l.getY()].equals(b) && blocks[j][l.getY()].canSelect()) range[j][l.getY()] = true;
+        // left
+        for(int f=l.getY()-1; f>=0; f--) {
+            if (blocks[l.getX()][f].equals(b) && blocks[l.getX()][f].canSelect() && blocks[l.getX()][f+1].equals(b)) range[l.getX()][f] = true;
+        }
+
+        // verticalUp
+        for(int u=l.getX()-1 ; u>=0; u--) {
+            if (blocks[u][l.getY()].equals(b) && blocks[u][l.getY()].canSelect() && blocks[u+1][l.getY()].equals(b)) range[u][l.getY()] = true;
+        }
+
+        // verticalDown
+        for(int d=l.getX()+1 ; d<board.getHeight(); d++) {
+            if (blocks[d][l.getY()].equals(b) && blocks[d][l.getY()].canSelect() && blocks[d-1][l.getY()].equals(b)) range[d][l.getY()] = true;
         }
 
         return range;
