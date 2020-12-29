@@ -5,7 +5,7 @@ package entity;
  * @description:
  * @author: Junli YE
  */
-public class NormalBlock extends Block {
+public class NormalBlock extends Block<Color> {
     public NormalBlock(Color c) {
         super(c);
     }
@@ -22,6 +22,6 @@ public class NormalBlock extends Block {
 
     @Override
     public void eliminate() {
-        this.color=null;
+        this.element=null;
     }
 }

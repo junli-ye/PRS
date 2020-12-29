@@ -18,9 +18,7 @@ public class BlockFactory {
 
     public AnimalBlock createNewAnimalBlock() {
         Animal[] a = Animal.values();
-        Color[] c = Color.values();
         int x = rd.nextInt(a.length);
-        int y = rd.nextInt(c.length);
-        return new AnimalBlock(c[y], a[x]);
+        return new AnimalBlock(a[x]);
     }
 }
