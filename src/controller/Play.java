@@ -1,6 +1,6 @@
 package controller;
 
-import entity.Board;
+import entity.*;
 
 import java.util.Scanner;
 
@@ -29,8 +29,29 @@ public class Play {
         Game game = new Game();
         game.print();
         System.out.println();
-        game.eliminate(1,1);
-        System.out.println();
+//        System.out.println();
+//        game.eliminate(1,1);
+//        System.out.println();
+//        game.print();
+
+        // Check for range booleans array
+//        boolean[][] range = game.rangeOfEliminate(l);
+//        for(int i=0; i<range.length; i++) {
+//            for(int j=0; j<range[i].length; j++) {
+//                System.out.print(range[i][j]+"  ");
+//            }
+//            System.out.println();
+//        }
+
+        // Check for fall
+//        Block[][] blocks = game.getBoard().getBlocks();
+//        blocks[3][5]=null;
+//        blocks[2][5]=null;
+//        game.print();
+//        System.out.println();
+//        game.fall(blocks);
+//        game.print();
+        game.eliminate(1,2);
         game.print();
 
     }

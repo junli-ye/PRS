@@ -36,7 +36,8 @@ public abstract class Block<T> {
 
     @Override
     public String toString() {
-        return this.element.toString();
+        if(this.element != null) return this.element.toString();
+        else return " ";
     }
 
     @Override
