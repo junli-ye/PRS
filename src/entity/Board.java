@@ -6,8 +6,8 @@ package entity;
  * @author: Junli YE
  */
 public class Board {
-    static final int WIDTH = 6;
-    static final int HEIGHT = 6;
+    static final int WIDTH = 10;
+    static final int HEIGHT = 10;
 
     private static BlockFactory factory = new BlockFactory();
     private Block[][] blocks;

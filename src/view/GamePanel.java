@@ -1,19 +1,15 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.Game;
-import entity.Block;
-import entity.Board;
+import entity.*;
 
 /**
  * 
@@ -27,8 +23,8 @@ public class GamePanel extends JPanel {
 	
 	JButton bl= new JButton(new ImageIcon("blue.png"));
 	JButton gr= new JButton(new ImageIcon("green.jpeg"));
-	JButton or= new JButton(new ImageIcon("orange.png"));
-	JButton re= new JButton(new ImageIcon("red.jpeg"));
+	JButton or= new JButton(new ImageIcon("img/orange.png"));
+	JButton re= new JButton(new ImageIcon("img/red.jpeg"));
 	JButton ye= new JButton(new ImageIcon("yellow.png"));
 	JButton[][] bu;
 	Game g=new Game();

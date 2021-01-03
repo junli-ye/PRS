@@ -15,20 +15,31 @@ public class Play {
         System.out.println("Welcome to PRS Game, in this console you can play the game easily in text");
         System.out.println("Here we go:");
         game.print();
-        Scanner sc = new Scanner(System.in);
         while(!game.isWin()) {
-            System.out.println("Please enter the coordinate you want to click with ',' to separate");
-            String l = sc.nextLine();
-            String[] s = l.split(", ");
-            game.eliminate(Integer.parseInt(s[0]),Integer.parseInt(s[1]));
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Please enter the coordinate you want to click.");
+            System.out.println("First please enter the value of x and then press the enter button.");
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            System.out.println("The coordinate where you want to eliminate is: "+x+","+y);
+            game.eliminate(x,y);
+            game.print();
         }
     }
 
     public static void main(String[] args) {
-//        playInText();
-        Game game = new Game();
-        game.print();
-        System.out.println();
+        playInText();
+//        Game game = new Game();
+//        game.print();
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Please enter the coordinate you want to click");
+//        int x = sc.nextInt();
+//        int y = sc.nextInt();
+//        System.out.println("The coordinate where you want to eliminate is: "+x+","+y);
+//        game.eliminate(x,y);
+//        game.print();
+
+//        System.out.println();
 //        System.out.println();
 //        game.eliminate(1,1);
 //        System.out.println();
@@ -51,8 +62,8 @@ public class Play {
 //        System.out.println();
 //        game.fall(blocks);
 //        game.print();
-        game.eliminate(1,2);
-        game.print();
+//        game.eliminate(1,2);
+//        game.print();
 
     }
 }

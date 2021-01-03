@@ -37,12 +37,16 @@ public class Game {
         boolean[][] range = rangeOfEliminate(new Location(x,y));
         Block[][] blocks = board.getBlocks();
 
-        for(int i=0; i<blocks.length; i++) {
-            for(int j=0; j<blocks[i].length; j++) {
-                if(range[i][j]) {
-                    blocks[i][j].eliminate();
+        try{
+            for(int i=0; i<blocks.length; i++) {
+                for(int j=0; j<blocks[i].length; j++) {
+                    if(range[i][j]) {
+                        blocks[i][j].eliminate();
+                    }
                 }
             }
+        }catch (Exception e) {
+            System.out.println("Error: The square you have selected cannot be eliminated, or there are no squares in the coordinates");
         }
 
         fall(blocks);
