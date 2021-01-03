@@ -23,15 +23,21 @@ import entity.Board;
 
 public class GamePanel extends JPanel {
 	JPanel p=new JPanel();
-	public GamePanel() {
+	Game g;
+
+	/**
+	 * Constructor of GamePanel
+	 * @param g
+	 */
+	public GamePanel(Game g) {
 	
 	JButton bl= new JButton(new ImageIcon("blue.png"));
 	JButton gr= new JButton(new ImageIcon("green.jpeg"));
 	JButton or= new JButton(new ImageIcon("orange.png"));
 	JButton re= new JButton(new ImageIcon("red.jpeg"));
 	JButton ye= new JButton(new ImageIcon("yellow.png"));
-	JButton[][] bu;
-	Game g=new Game();
+	JButton[][] bu=new JButton[g.getBoard().getHeight()][g.getBoard().getWidth()];
+	this.g = g;
 	Block[][] blocks=g.getBoard().getBlocks();
 	GridBagConstraints gbc=new GridBagConstraints();
 	
@@ -55,23 +61,23 @@ public class GamePanel extends JPanel {
 				}
 				}else {
 		  
-			if(blocks[i][j].getElement()==Color.B) {
+			if(blocks[i][j].getElement() == entity.Color.B) {
 			 bu[i][j]=bl;
 				
 			}
-			if(blocks[i][j].getElement()==Color.G) {
+			if(blocks[i][j].getElement() == entity.Color.G) {
 				bu[i][j]=gr;
 					
 				}
-			if(blocks[i][j].getElement()==Color.O) {
+			if(blocks[i][j].getElement() == entity.Color.O) {
 				bu[i][j]=or;
 					
 				}
-			if(blocks[i][j].getElement()==Color.R) {
+			if(blocks[i][j].getElement() == entity.Color.R) {
 				bu[i][j]=re;
 					
 				}
-			if(blocks[i][j].getElement()==Color.Y) {
+			if(blocks[i][j].getElement() == entity.Color.Y) {
 				bu[i][j]=ye;
 					
 				}
@@ -84,7 +90,7 @@ public class GamePanel extends JPanel {
 			bu[i][j].setFocusPainted(false);
 			bu[i][j].setBorderPainted(false);
 			//eliminate boarder & focus
-			bu[i][j].addActionListener(event->g.eliminate(i, j));
+//			bu[i][j].addActionListener(event -> g.eliminate(i, j));
 			
 			
 			//i dont know how to do action Fall and recover new panel;

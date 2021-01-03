@@ -8,21 +8,27 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.Play;
 import entity.AnimalBlock;
 import entity.BlockFactory;
 import entity.NormalBlock;
+
+import controller.Game;
 /**
  * 
  * @author lsq9905
  *
  */
 public class View extends JFrame {
-	
-	JPanel gp=new GamePanel();// main game panel
+	Game game;
+
+	JPanel gp=new GamePanel(game);// main game panel
 	JPanel sb=new ScoreBoard();// scoreboard
 	JPanel cp=new ControlPanel();//control panel
 	
-	public View() {
+	public View(Game game) {
+		// set up the game
+		this.game=game;
 		// set a title
 		setTitle("Pet Rescue Saga");
 		//set window size
@@ -37,8 +43,6 @@ public class View extends JFrame {
         this.getContentPane().add(BorderLayout.EAST,sb);
         this.getContentPane().add(BorderLayout.SOUTH,cp);
         this.setVisible(true);
-       
-	
 	}
 	
  
@@ -46,17 +50,9 @@ public class View extends JFrame {
 	public void restart() {
 		Container c= getContentPane();
 		c.removeAll();
-		new View();
+		new View(new Game());
 		
 		
 		
 	}
-
-public static void main(String[] args){
-		 new View();
-		//v.restart();
-		
-		
-	
-}
 }
