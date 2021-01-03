@@ -1,11 +1,7 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +9,8 @@ import javax.swing.JPanel;
 
 import controller.Game;
 import entity.Block;
-import entity.Board;
+import entity.NormalBlock;
+import org.w3c.dom.Element;
 
 /**
  * 
@@ -22,7 +19,6 @@ import entity.Board;
  */
 
 public class GamePanel extends JPanel {
-	JPanel p=new JPanel();
 	Game g;
 
 	/**
@@ -30,21 +26,16 @@ public class GamePanel extends JPanel {
 	 * @param g
 	 */
 	public GamePanel(Game g) {
-	
-	JButton bl= new JButton(new ImageIcon("blue.png"));
-	JButton gr= new JButton(new ImageIcon("green.jpeg"));
-	JButton or= new JButton(new ImageIcon("orange.png"));
-	JButton re= new JButton(new ImageIcon("red.jpeg"));
-	JButton ye= new JButton(new ImageIcon("yellow.png"));
+
 	JButton[][] bu=new JButton[g.getBoard().getHeight()][g.getBoard().getWidth()];
+
 	this.g = g;
 	Block[][] blocks=g.getBoard().getBlocks();
+
+	// layout setting
 	GridBagConstraints gbc=new GridBagConstraints();
-	
-    
 	GridBagLayout gir=new GridBagLayout();
-    
-	p.setLayout(gir);
+	this.setLayout(gir);
 	
 	for(int i=0;i<g.getBoard().getHeight();i++) {
 		for(int j=0;j<g.getBoard().getWidth();j++) {
@@ -99,17 +90,28 @@ public class GamePanel extends JPanel {
 			
 			
 			
-			p.add(bu[i][j],gbc);
+			this.add(bu[i][j],gbc);
 
 		}
-		
+		}
+	this.setVisible(true);
+ 	}
+
+ 	private JButton setColor(Block b) {
+		// Initialize different colored squares
+		JButton bl= new JButton(new ImageIcon("img/blue.png"));
+		JButton gr= new JButton(new ImageIcon("img/green.jpeg"));
+		JButton or= new JButton(new ImageIcon("img/orange.png"));
+		JButton re= new JButton(new ImageIcon("img/red.jpeg"));
+		JButton ye= new JButton(new ImageIcon("img/yellow.png"));
+		// Select the corresponding button according to the color in b
+		Object e = b.getElement();
+		if (e instanceof NormalBlock) {
+			return null;
+		}else {
+			return null;
+		}
 	}
-	
-	p.setVisible(true);
-	
-	
-	
- }
 }
 
 

@@ -31,10 +31,11 @@ public class Play {
     public static void playInWindow() {
         Game game = new Game();
         View v = new View(game);
+
     }
 
     public static void main(String[] args) {
-//        playInText();
+        playInText();
 //        Game game = new Game();
 //        game.print();
 //        Scanner sc = new Scanner(System.in);
@@ -72,6 +73,6 @@ public class Play {
 //        game.print();
 
         // Test for playInWindow
-        playInWindow();
+//        playInWindow();
     }
 }
