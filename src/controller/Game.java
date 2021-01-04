@@ -17,7 +17,6 @@ public class Game {
 
     /**
      * Getter
-     * @return
      */
     public Board getBoard() {
         return board;
@@ -35,14 +34,18 @@ public class Game {
      */
     public void eliminate(int x, int y) {
         boolean[][] range = rangeOfEliminate(new Location(x,y));
-        Block[][] blocks = board.getBlocks();
+        Block<?>[][] blocks = board.getBlocks();
 
-        for(int i=0; i<blocks.length; i++) {
-            for(int j=0; j<blocks[i].length; j++) {
-                if(range[i][j]) {
-                    blocks[i][j].eliminate();
+        try{
+            for(int i=0; i<blocks.length; i++) {
+                for(int j=0; j<blocks[i].length; j++) {
+                    if(range[i][j]) {
+                        blocks[i][j].eliminate();
+                    }
                 }
             }
+        }catch (Exception e) {
+            System.out.println("Error: The square you have selected cannot be eliminated, or there are no squares in the coordinates");
         }
 
         fall(blocks);
@@ -53,7 +56,7 @@ public class Game {
      */
     public boolean[][] rangeOfEliminate(Location l) {
         boolean[][] range = new boolean[board.getWidth()][board.getHeight()];
-        Block[][] blocks = board.getBlocks();
+        Block<?>[][] blocks = board.getBlocks();
         NormalBlock b = (NormalBlock)blocks[l.getX()][l.getY()];
 
         // self
@@ -87,18 +90,18 @@ public class Game {
     /**
      * Block sinking
      */
-    public void fall(Block[][] blocks) {
+    public void fall(Block<?>[][] blocks) {
         // Because all the squares are sinking in their own column, they are divided into different columns to deal with the problem
         for(int j=0; j<board.getWidth(); j++) {
 
             // Step 1: Take out each column of squares to generate a new array tmp for operation
-            Block[] tmp = new Block[board.getHeight()];
+            Block<?>[] tmp = new Block[board.getHeight()];
             for(int k=0; k<tmp.length; k++) {
                 tmp[k] = blocks[k][j];
             }
 
             // Step 2: Call the delete Null Block function to process tmp, and get the reordered array deleted
-            Block[] deleted = deleteNullBlock(tmp);
+            Block<?>[] deleted = deleteNullBlock(tmp);
 
             // Part 3: Put each element in the deleted array back into blocks
             for(int i=0; i<deleted.length; i++) {
@@ -109,9 +112,9 @@ public class Game {
         this.board.setBlocks(blocks);
     }
 
-    private Block[] deleteNullBlock(Block[] arr) {
+    private Block<?>[] deleteNullBlock(Block<?>[] arr) {
         // step1: Define a list list, and loop assignment
-        ArrayList<Block> bList = new ArrayList<Block>();
+        ArrayList<Block<?>> bList = new ArrayList<>();
         for (int i = arr.length-1; i >= 0; i--) {
             bList.add(arr[i]);
         }
@@ -128,18 +131,22 @@ public class Game {
 
         // step3: Convert the list of lists to a newly defined intermediate array and assign values ​​to it
 
-        Block[] array = bList.toArray(new Block[0]);
-        return array;
+        return bList.toArray(new Block[0]);
     }
 
     /**
      * Over?
      */
     public boolean isWin() {
-        Block[][] blocks = board.getBlocks();
+        Block<?>[][] blocks = board.getBlocks();
         for(int i=0; i<board.getWidth(); i++) {
             if (blocks[i][board.getWidth()-1] instanceof NormalBlock) return false;
         }
         return true;
+    }
+
+    public void setSize(int x) {
+        this.board.setHEIGHT(x);
+        this.board.setWIDTH(x);
     }
 }

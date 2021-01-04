@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.Objects;
-
 /**
  * @name: Block
  * @description:
@@ -12,10 +10,6 @@ public abstract class Block<T> {
 
     public T getElement() {
         return this.element;
-    }
-
-    public void setElement(T t) {
-        this.element = t;
     }
 
     public Block(T t) {
@@ -44,7 +38,7 @@ public abstract class Block<T> {
     public boolean equals(Object obj) {
         if(this == obj) return true;
         if(obj == null) return false;
-        Block blk = (Block)obj;
+        Block<?> blk = (Block<?>)obj;
         return this.element == blk.element;
     }
 }
