@@ -2,7 +2,6 @@ package entity;
 
 /**
  * @name: Board
- * @description:
  * @author: Junli YE
  */
 public class Board {
