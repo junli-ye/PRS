@@ -3,6 +3,7 @@ package controller;
 import entity.*;
 import view.View;
 
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -30,7 +31,15 @@ public class Play {
 
     public static void playInWindow() {
         Game game = new Game();
-        View v = new View();
+        View view = new View(game);
+        // Thread-Safe
+        EventQueue.invokeLater(() -> {
+            try{
+                view.setVisible(true);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
 
     }
 

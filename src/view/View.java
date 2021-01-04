@@ -28,7 +28,7 @@ public class View extends JFrame {
 	/**
 	 * Constructor of view
 	 */
-	public View() {
+	public View(Game game) {
 		// set a title
 		setTitle("PRS");
 		//set window size
@@ -41,21 +41,10 @@ public class View extends JFrame {
         // add panels
 		cp = new ControlPanel();
         this.getContentPane().add(BorderLayout.SOUTH,cp);
-        this.game = new Game();
+        this.game = game;
 		this.gp = new GamePanel(game);
 		this.getContentPane().add(BorderLayout.CENTER,gp);
-		// Visibility
-        this.setVisible(true);
         //MusicPlay.play();// bgm begins!!!
-	}
-
-	// NOT READY
-	protected void restart() {
-		// Code 0 for test
-		System.out.println("0");
-
-		this.gp = new GamePanel(new Game());
-		this.getContentPane().add(BorderLayout.CENTER,gp);
 	}
 
 	/**
@@ -83,5 +72,10 @@ public class View extends JFrame {
 			});
 		}
 
+		protected void restart() {
+			gp.restart();
+			gp.revalidate();
+			gp.repaint();
+		}
 	}
 }

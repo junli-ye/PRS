@@ -1,7 +1,8 @@
 package view;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,11 +19,11 @@ import entity.*;
  */
 
 public class GamePanel extends JPanel {
-    private JButton[][] bu;
+    protected JButton[][] bu;
     private Game g;
 	// the dimension of the game board
-	private int height;
-	private int width;
+	protected int height;
+	protected int width;
 
 	/**
 	 * Constructor of GamePanel
@@ -34,10 +35,10 @@ public class GamePanel extends JPanel {
 		this.width = g.getBoard().getWidth();
 
 		// Set the size of JButton according to the size of the Board in the Game g
-		bu=new JButton[height][width];
+		bu = new JButton[height][width];
 
 		// Set layout
-		this.setLayout(new GridLayout(height,width));
+		this.setLayout(new GridLayout(height, width));
 
 		// Add all Buttons to the pane，according to he information provided by Game g
 		this.addButton();
@@ -45,23 +46,19 @@ public class GamePanel extends JPanel {
 		// Set visibility
 		this.setVisible(true);
 
-		// Use a loop to assign a listener to each button to monitor the position selected by the mouse
-//		for(int i=0; i<height; i++) {
-//			for(int j=0; j<width; j++) {
-//				bu[i][j].addMouseListener(new MouseAdapter(){
-//
-//					public void mouseClicked(MouseEvent e) {
-//						// click left button
-//						if(e.getButton()==MouseEvent.BUTTON1) {
-//
-//						int x=e.getX();
-//						int y=e.getY();
-//						g.eliminate(x, y);
-//					}
-//					   }
-//				});
-//			}
-//		}
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				int x = i;
+				int y = j;
+				bu[i][j].addActionListener(e -> {
+					System.out.println("Clicked" + x + "," + y);
+					clickedToEliminate(x, y);
+					this.updateUI();
+				});
+			}
+		}
+	}
+
 	/**
 	 * decide if the game is win
 	 */
@@ -73,7 +70,6 @@ public class GamePanel extends JPanel {
 //	    }else {
 //	    	this.addButton(bu);
 //	}
-	}
 
 	/**
 	 * add buttons
@@ -87,7 +83,7 @@ public class GamePanel extends JPanel {
 				gbc.gridy=j;
 				gbc.fill= GridBagConstraints.CENTER;
 
-				if(tmp[i][j] == null) {
+				if(tmp[i][j] == null || tmp[i][j].getElement() == null) {
 					bu[i][j] = new JButton();
 				}
 				else {
@@ -142,5 +138,29 @@ public class GamePanel extends JPanel {
 		}
 		return tmp;
  	}
+
+ 	public void restart() {
+ 		EventQueue.invokeLater( () -> {
+			this.g = new Game();
+			this.removeAll();
+			this.bu=new JButton[height][width];
+			this.addButton();
+		});
+ 		g.print();
+	}
+
+	private void clickedToEliminate(int x, int y) {
+		EventQueue.invokeLater( () -> {
+			try{
+				g.eliminate(x,y);
+				g.print();
+				this.removeAll();
+				this.bu=new JButton[height][width];
+				this.addButton();
+			}catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		});
+	}
 }
 
