@@ -146,4 +146,9 @@ public class Game {
         }
         return true;
     }
+
+    public void setSize(int x) {
+        this.board.setHEIGHT(x);
+        this.board.setHEIGHT(x);
+    }
 }

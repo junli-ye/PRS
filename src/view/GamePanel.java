@@ -1,13 +1,8 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import controller.Game;
 import entity.*;
@@ -45,31 +40,17 @@ public class GamePanel extends JPanel {
 
 		// Set visibility
 		this.setVisible(true);
-
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-				int x = i;
-				int y = j;
-				bu[i][j].addActionListener(e -> {
-					System.out.println("Clicked" + x + "," + y);
-					clickedToEliminate(x, y);
-					this.updateUI();
-				});
-			}
-		}
 	}
 
 	/**
-	 * decide if the game is win
+	 * Determine whether the game is over (including success and failure)
 	 */
-//	if(g.isWin()) {
-//		JPanel etiquette = null;
-//
-//	JOptionPane.showMessageDialog(etiquette,"Congratulations! Game success! The window will close automatically after clicking on Confirm.","Win",JOptionPane.WARNING_MESSAGE);
-//	        System.exit(0);
-//	    }else {
-//	    	this.addButton(bu);
-//	}
+	private void isGameOver() {
+		if(this.g.isWin()) {
+			JPanel jp = new JPanel();
+			JOptionPane.showMessageDialog(jp,"Congratulation! Game success! The window will close automatically","OK",JOptionPane.WARNING_MESSAGE);
+		}
+	}
 
 	/**
 	 * add buttons
@@ -90,8 +71,16 @@ public class GamePanel extends JPanel {
 					bu[i][j] = setColor(tmp[i][j]);
 				}
 
-				// Eliminate the border around the button (enable after finishing all debugging)
-//				b[i][j].setBorder(null);
+				int x = i;
+				int y = j;
+				bu[i][j].addActionListener(e -> {
+					System.out.println("Clicked" + x + "," + y);
+					clickedToEliminate(x, y);
+					this.updateUI();
+					isGameOver();
+				});
+
+				bu[i][j].setBorder(null);
 
 				// Add the color (animal) button to the panel to represent blocks
 				this.add(bu[i][j],gbc);
