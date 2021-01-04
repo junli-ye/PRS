@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.Play;
@@ -47,6 +48,16 @@ public class View extends JFrame {
 		// Visibility
         this.setVisible(true);
         //MusicPlay.play();// bgm begins!!!
+        if(this.game.isWin()) {
+         	JPanel etiquette = null;
+
+ 			JOptionPane.showMessageDialog(etiquette,"Congratulations! Game success! The window will close automatically after clicking on Confirm.","Win",JOptionPane.WARNING_MESSAGE);
+ 			        System.exit(0);
+         }else {
+        	this.gp=new GamePanel(this.game);
+         	
+         	
+         }
 	}
 
 	// NOT READY

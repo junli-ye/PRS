@@ -1,7 +1,12 @@
 package view;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,7 +17,7 @@ import controller.Game;
 import entity.*;
 
 /**
- *
+ * @author lsq9905
  * @author Junli YE
  *
  */
@@ -28,6 +33,7 @@ public class GamePanel extends JPanel {
 	 * Constructor of GamePanel
 	 */
 	public GamePanel(Game game) {
+		
 		this.g = game;
 		g.print();
 		this.height = g.getBoard().getHeight();
@@ -44,36 +50,64 @@ public class GamePanel extends JPanel {
 
 		// Set visibility
 		this.setVisible(true);
+		/**
+		 * set listener
+		 */
+		for(int i=0; i<height; i++) {
+			for(int j=0; j<width; j++) {
+				int x=i;
+				int y=j;
+				Block[][] b=g.getBoard().getBlocks();
+			bu[i][j].addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	if(b[x][y] instanceof NormalBlock )
+	               g.eliminate(x, y);
+	            	 
+	              
+	               
+			
+			}
+
+				
+					
+				});
+			
+			}
+		}
 
 		// Use a loop to assign a listener to each button to monitor the position selected by the mouse
-//		for(int i=0; i<height; i++) {
-//			for(int j=0; j<width; j++) {
-//				bu[i][j].addMouseListener(new MouseAdapter(){
-//
-//					public void mouseClicked(MouseEvent e) {
-//						// click left button
-//						if(e.getButton()==MouseEvent.BUTTON1) {
-//
-//						int x=e.getX();
-//						int y=e.getY();
-//						g.eliminate(x, y);
-//					}
-//					   }
-//				});
-//			}
-//		}
+		/*for(int i=0; i<height; i++) {
+			for(int j=0; j<width; j++) {
+				bu[i][j].addMouseListener(new MouseAdapter(){
+
+					public void mouseClicked(MouseEvent e) {
+						// click left button
+						if(e.getButton()==MouseEvent.BUTTON1) {
+
+					int x=e.getX();
+					int y=e.getY();
+						g.eliminate(x, y);
+						if(g.isWin()) {
+							JPanel etiquette = null;
+
+						JOptionPane.showMessageDialog(etiquette,"Congratulations! Game success! The window will close automatically after clicking on Confirm.","Win",JOptionPane.WARNING_MESSAGE);
+						        System.exit(0);
+						    }else {
+						    	removeAll();;
+						    	addButton();
+						}
+				
+					   }
+				}});
+			}		}
 	/**
-	 * decide if the game is win
-	 */
-//	if(g.isWin()) {
-//		JPanel etiquette = null;
-//
-//	JOptionPane.showMessageDialog(etiquette,"Congratulations! Game success! The window will close automatically after clicking on Confirm.","Win",JOptionPane.WARNING_MESSAGE);
-//	        System.exit(0);
-//	    }else {
-//	    	this.addButton(bu);
-//	}
+	 * decide if the game is win*/
+	
+	
 	}
+	
+
+	
 
 	/**
 	 * add buttons
