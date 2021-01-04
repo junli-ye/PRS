@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,67 +18,69 @@ import controller.Game;
 /**
  * 
  * @author lsq9905
- *
+ * @author Junli YE
  */
 public class View extends JFrame {
-	Game game=new Game(); // Interactive
-
-	JPanel gp=new GamePanel(game); //main game panel
-	JPanel sb=new ScoreBoard();// scoreboard
-	JPanel cp= new ControlPanel();//control panel
+	Game game; // Interactive with user
+	GamePanel gp;
+	ControlPanel cp;
 
 	/**
-	 * Constructor
-	 * @param game
+	 * Constructor of view
 	 */
 	public View() {
-		// set up the game
-		
 		// set a title
-		setTitle("Pet Rescue Saga");
+		setTitle("PRS");
 		//set window size
-        setSize(1000, 1000);
+        setSize(500, 500);
         //set method to exit
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //open it centrally
         setLocationRelativeTo(null);
         this.getContentPane().setLayout(new BorderLayout());
-        //set layout of these 3 panels
-        /*this.getContentPane().add(BorderLayout.CENTER,gp);
-        this.getContentPane().add(BorderLayout.EAST,sb);
-        this.getContentPane().add(BorderLayout.SOUTH,cp);*/
+        // add panels
+		cp = new ControlPanel();
+        this.getContentPane().add(BorderLayout.SOUTH,cp);
+        this.game = new Game();
+		this.gp = new GamePanel(game);
+		this.getContentPane().add(BorderLayout.CENTER,gp);
+		// Visibility
         this.setVisible(true);
-        this.getContentPane().add(gp);
-        MusicPlay.play();// bgm begins!!!
+        //MusicPlay.play();// bgm begins!!!
 	}
 
+	// NOT READY
+	protected void restart() {
+		// Code 0 for test
+		System.out.println("0");
+
+		this.gp = new GamePanel(new Game());
+		this.getContentPane().add(BorderLayout.CENTER,gp);
+	}
 
 	/**
-	 * Restart
+	 * Inner class controlPanel which describe a control set of this game on the bottom of window
 	 */
-	/*public void restart() {
-		Container c= getContentPane();
-		c.removeAll();
-		new View(new Game());
-	}
-
-	public static void main(String[] args) {
-		new View(new Game());
-	}*/
-
-	static class ControlPanel extends JPanel {
+	class ControlPanel extends JPanel {
 		public ControlPanel() {
-
 			JPanel p=new JPanel(new GridLayout(1,2));
-
+			this.add(p);
 			p.setVisible(true);
 			JButton jb1=new JButton("Start");
 			JButton jb2=new JButton("Restart");
-			//we dont have this function
-			jb1.addActionListener(event -> new Play());
-			/*jb1.addActionListener(event -> restart());*/
+			jb2.setEnabled(false);
 			p.add(jb1);
 			p.add(jb2);
+
+			// Use of lambda expression
+			jb1.addActionListener((ActionEvent e) -> {
+				jb1.setEnabled(false);
+				jb2.setEnabled(true);
+			});
+
+			jb2.addActionListener((ActionEvent e) -> {
+				restart();
+			});
 		}
 
 	}

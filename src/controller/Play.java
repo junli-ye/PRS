@@ -30,12 +30,13 @@ public class Play {
 
     public static void playInWindow() {
         Game game = new Game();
-        View v = new View(game);
+        View v = new View();
 
     }
 
     public static void main(String[] args) {
         playInWindow();
+//        playInText();
 //        Game game = new Game();
 //        game.print();
 //        Scanner sc = new Scanner(System.in);
