@@ -20,9 +20,9 @@ import controller.Game;
  *
  */
 public class View extends JFrame {
-	Game game; // Interactive
+	Game game=new Game(); // Interactive
 
-//	JPanel gp=new GamePanel(game);// main game panel
+	JPanel gp=new GamePanel(game); //main game panel
 	JPanel sb=new ScoreBoard();// scoreboard
 	JPanel cp= new ControlPanel();//control panel
 
@@ -30,9 +30,9 @@ public class View extends JFrame {
 	 * Constructor
 	 * @param game
 	 */
-	public View(Game game) {
+	public View() {
 		// set up the game
-		this.game=game;
+		
 		// set a title
 		setTitle("Pet Rescue Saga");
 		//set window size
@@ -43,11 +43,12 @@ public class View extends JFrame {
         setLocationRelativeTo(null);
         this.getContentPane().setLayout(new BorderLayout());
         //set layout of these 3 panels
-//        this.getContentPane().add(BorderLayout.CENTER,gp);
+        /*this.getContentPane().add(BorderLayout.CENTER,gp);
         this.getContentPane().add(BorderLayout.EAST,sb);
-        this.getContentPane().add(BorderLayout.SOUTH,cp);
+        this.getContentPane().add(BorderLayout.SOUTH,cp);*/
         this.setVisible(true);
-        //MusicPlay.play();// bgm begins!!!
+        this.getContentPane().add(gp);
+        MusicPlay.play();// bgm begins!!!
 	}
 
 

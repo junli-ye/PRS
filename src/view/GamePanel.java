@@ -37,7 +37,7 @@ public class GamePanel extends JPanel {
 	 */
 	public GamePanel(Game g) {
 
-	JButton[][] bu=new JButton[g.getBoard().getHeight()][g.getBoard().getWidth()];
+	JButton[][] bu = null;
 	this.addButton(g, bu);
 	this.setLayout(gir);
 	this.setVisible(true);
@@ -73,19 +73,8 @@ public class GamePanel extends JPanel {
 	    	
 	    
 
+	}	
 	}
-	
-	
-	
-			
-	
-	
-	
-	}
-	
-	
-	
-	
 	
 	
 	/**
@@ -252,6 +241,7 @@ public class GamePanel extends JPanel {
 	}
 this.setVisible(true);
 	}*/
+
 
 
 
