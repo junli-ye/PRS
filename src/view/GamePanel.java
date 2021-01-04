@@ -10,7 +10,7 @@ import entity.*;
 /**
  *
  * @author Junli YE
- *
+ * @author lsq9905
  */
 
 public class GamePanel extends JPanel {
