@@ -93,17 +93,17 @@ public class GamePanel extends JPanel {
 	 */
  	private JButton setColor(Block<?> B) {
  		JButton tmp = new JButton();
-        JButton bl= new JButton(new ImageIcon("img/blue.png"));
-		JButton gr= new JButton(new ImageIcon("img/green.jpeg"));
-		JButton or= new JButton(new ImageIcon("img/orange.png"));
-		JButton re= new JButton(new ImageIcon("img/red.jpeg"));
-		JButton ye= new JButton(new ImageIcon("img/yellow.png"));
+        JButton bl= new JButton(new ImageIcon("../img/blue.png"));
+		JButton gr= new JButton(new ImageIcon("../img/green.jpeg"));
+		JButton or= new JButton(new ImageIcon("../img/orange.png"));
+		JButton re= new JButton(new ImageIcon("../img/red.jpeg"));
+		JButton ye= new JButton(new ImageIcon("../img/yellow.png"));
 		
-        JButton a= new JButton(new ImageIcon("img/a.jpg"));
-		JButton b= new JButton(new ImageIcon("img/b.jpg"));
-		JButton c= new JButton(new ImageIcon("img/c.jpg"));
-		JButton d= new JButton(new ImageIcon("img/d.jpg"));
-		JButton e= new JButton(new ImageIcon("img/e.jpg"));
+        JButton a= new JButton(new ImageIcon("../img/a.jpg"));
+		JButton b= new JButton(new ImageIcon("../img/b.jpg"));
+		JButton c= new JButton(new ImageIcon("../img/c.jpg"));
+		JButton d= new JButton(new ImageIcon("../img/d.jpg"));
+		JButton e= new JButton(new ImageIcon("../img/e.jpg"));
 
 		// Select the corresponding button according to the color in b
 		if (B instanceof NormalBlock) {
