@@ -47,21 +47,22 @@ public class View extends JFrame {
         this.getContentPane().add(BorderLayout.EAST,sb);
         this.getContentPane().add(BorderLayout.SOUTH,cp);
         this.setVisible(true);
+        //MusicPlay.play();// bgm begins!!!
 	}
 
 
 	/**
 	 * Restart
 	 */
-	public void restart() {
+	/*public void restart() {
 		Container c= getContentPane();
 		c.removeAll();
 		new View(new Game());
 	}
 
 	public static void main(String[] args) {
-		View v = new View(new Game());
-	}
+		new View(new Game());
+	}*/
 
 	static class ControlPanel extends JPanel {
 		public ControlPanel() {

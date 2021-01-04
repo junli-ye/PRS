@@ -35,7 +35,7 @@ public class Play {
     }
 
     public static void main(String[] args) {
-        playInText();
+        playInWindow();
 //        Game game = new Game();
 //        game.print();
 //        Scanner sc = new Scanner(System.in);
@@ -76,3 +76,5 @@ public class Play {
 //        playInWindow();
     }
 }
+
+
