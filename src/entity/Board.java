@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.HashMap;
-
 /**
  * @name: Board
  * @description:
@@ -12,7 +10,7 @@ public class Board {
     static int HEIGHT = 6;
 
     private static BlockFactory factory = new BlockFactory();
-    private Block[][] blocks;
+    private Block<?>[][] blocks;
 
     public Board() {
         this.blocks=new Block[WIDTH][HEIGHT];
@@ -24,11 +22,11 @@ public class Board {
         }
     }
 
-    public Block[][] getBlocks(){
+    public Block<?>[][] getBlocks(){
         return this.blocks;
     }
 
-    public void setBlocks(Block[][] blocks) { this.blocks=blocks; }
+    public void setBlocks(Block<?>[][] blocks) { this.blocks=blocks; }
 
     public int getWidth() {
         return WIDTH;

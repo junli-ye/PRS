@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
 	 */
 	private void addButton() {
 		GridBagConstraints gbc = new GridBagConstraints();
-		Block[][] tmp = g.getBoard().getBlocks();
+		Block<?>[][] tmp = g.getBoard().getBlocks();
 		for(int i=0; i<height; i++) {
 			for(int j=0; j<width; j++) {
 				gbc.gridx=i;
@@ -90,10 +90,8 @@ public class GamePanel extends JPanel {
 
 	/**
 	 * Generate buttons with corresponding colors (or animals) for the specified block
-	 * @param B
-	 * @return
 	 */
- 	private JButton setColor(Block B) {
+ 	private JButton setColor(Block<?> B) {
  		JButton tmp = new JButton();
         JButton bl= new JButton(new ImageIcon("img/blue.png"));
 		JButton gr= new JButton(new ImageIcon("img/green.jpeg"));

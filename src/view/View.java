@@ -59,21 +59,15 @@ public class View extends JFrame {
 			p.add(jb1);
 			p.add(jb2);
 
-			jb0.addActionListener((ActionEvent e) -> {
-				new DimensionChoose();
-			});
+			jb0.addActionListener((ActionEvent e) -> new DimensionChoose());
 
-			jb1.addActionListener((ActionEvent e) -> {
-				new RulesPanel();
-			});
+			jb1.addActionListener((ActionEvent e) -> new RulesPanel());
 
-			jb2.addActionListener((ActionEvent e) -> {
-				restart();
-			});
+			jb2.addActionListener((ActionEvent e) -> restart());
 		}
 	}
 
-	class RulesPanel extends JPanel {
+	static class RulesPanel extends JPanel {
 		public RulesPanel() {
 			String r = "You can click any square to eliminate the squares of the same color adjacent to it.\n" +
 					"Please note that animals cannot be selected.\n"+

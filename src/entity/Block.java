@@ -12,10 +12,6 @@ public abstract class Block<T> {
         return this.element;
     }
 
-    public void setElement(T t) {
-        this.element = t;
-    }
-
     public Block(T t) {
         this.element = t;
     }
@@ -42,7 +38,7 @@ public abstract class Block<T> {
     public boolean equals(Object obj) {
         if(this == obj) return true;
         if(obj == null) return false;
-        Block blk = (Block)obj;
+        Block<?> blk = (Block<?>)obj;
         return this.element == blk.element;
     }
 }
