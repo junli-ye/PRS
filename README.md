@@ -13,7 +13,7 @@ The main purpose is to implement a game which likes King.com's "Pet Rescue Saga"
 or with HTTP address: <br>
 `https://github.com/junli-ye/PRS.git`
 
-2) Open the terminal and switch to the directory where the game folder is located
+2) Open the terminal and switch to the directory where the game folder is located (PRS-master/src)
 
   ###How to build
 
