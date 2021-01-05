@@ -44,6 +44,10 @@ public class View extends JFrame {
 		gp.repaint();
 	}
 
+	public void robotPlay() {
+		gp.robotPlay();
+	}
+
 	/**
 	 * Inner class controlPanel which describe a control set of this game on the bottom of window
 	 */
@@ -55,15 +59,19 @@ public class View extends JFrame {
 			JButton jb0=new JButton("Difficult");
 			JButton jb1=new JButton("Help");
 			JButton jb2=new JButton("Can't continue? Try to start over");
+			JButton jb3=new JButton("Robot");
 			p.add(jb0);
 			p.add(jb1);
 			p.add(jb2);
+			p.add(jb3);
 
 			jb0.addActionListener((ActionEvent e) -> new DimensionChoose());
 
 			jb1.addActionListener((ActionEvent e) -> new RulesPanel());
 
 			jb2.addActionListener((ActionEvent e) -> restart());
+
+			jb3.addActionListener((ActionEvent e) -> robotPlay());
 		}
 	}
 
