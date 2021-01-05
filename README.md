@@ -4,22 +4,22 @@ The main purpose is to implement a game which likes King.com's "Pet Rescue Saga"
 
 
 ## Getting started:
-   ###Prerequisites
+### Prerequisites
    - Java JRE 8
 
-   ###Download
+### Download
 1) Download this respectory on your own machine or clone it with the following github SSH key: </br>
 `git@github.com:junli-ye/PRS.git` <br>
 or with HTTP address: <br>
 `https://github.com/junli-ye/PRS.git`
 
-2) Open the terminal and switch to the directory where the game folder is located (PRS-master/src)
+2) Open the terminal and switch to the directory where the game folder is located (normally it's `PRS-master/src`)
 
-  ###How to build
+### How to build
 
 In the terminal, enter `javac controller/*.java entity/*.java view/*.java`
 
-   ###Run
+### Run
 In the terminal, enter `java controller/Play`
 
 ## Main rules
@@ -69,8 +69,8 @@ This game has two main rules. Players can easily start the game by following the
 ## Comments and suggestions
 Although this project is a term assignment, we have still chosen to open source it on github in the hope of getting 
 comments and suggestions from fellow students, professors or other professionals.
-###If you are a professor or professional
+### If you are a professor or professional
 Please give us your advices directly to our email addresses
-###If you want to make some changes
+### If you want to make some changes
 Please fell free to create your own branch named like `yourName_branchName` 
 
