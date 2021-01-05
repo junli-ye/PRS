@@ -59,10 +59,39 @@ public class Game {
         Block<?>[][] blocks = board.getBlocks();
         NormalBlock b = (NormalBlock)blocks[l.getX()][l.getY()];
 
-        // self
-        if(blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)
-                || blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b))
-            range[l.getX()][l.getY()] = true;
+        // Check whether the selected block itself can be eliminated: whether there are the same adjacent blocks
+        if (l.getX() == 0) {
+            // the special case of the uppermost boundary
+            if (l.getY() == 0) {
+                // Special algorithm for the upper left corner position
+                if (blocks[0][1].equals(b) || blocks[1][0].equals(b)) range[l.getX()][l.getY()] = true;
+            }else if (l.getY() == board.getWidth()-1) {
+                // Special algorithm for the upper right corner
+                if (blocks[0][board.getWidth()-2].equals(b) || blocks[1][board.getWidth()-1].equals(b)) range[l.getX()][l.getY()] = true;
+            }else {
+                if (blocks[0][l.getY()-1].equals(b) || blocks[0][l.getY()+1].equals(b) || blocks[1][l.getY()].equals(b)) range[l.getX()][l.getY()] = true;
+            }
+        }else if (l.getX() == board.getHeight()-1) {
+            // Special case of the lower boundary
+            if (l.getY() == 0) {
+                // Special algorithm for the lower left corner
+                if (blocks[board.getHeight()-1][1].equals(b) || blocks[board.getHeight()-2][0].equals(b)) range[l.getX()][l.getY()] = true;
+            }else if (l.getY() == board.getWidth()-1) {
+                // Special algorithm for the lower right corner
+                if (blocks[board.getHeight()-1][board.getWidth()-2].equals(b) || blocks[board.getHeight()-2][board.getWidth()-1].equals(b)) range[l.getX()][l.getY()] = true;
+            }else {
+                if (blocks[board.getHeight()-1][l.getY()-1].equals(b) || blocks[board.getHeight()-1][l.getY()+1].equals(b)
+                        || blocks[board.getHeight()-2][l.getY()].equals(b)) range[l.getX()][l.getY()] = true;
+            }
+        }else if (l.getY() == 0 || l.getY() == board.getWidth()-1) {
+            // Special cases of the left and right borders (where the corner positions have been excluded)
+            if (blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)) range[l.getX()][l.getY()] = true;
+        }else {
+            // Ordinary algorithm
+            if(blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)
+                    || blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b))
+                range[l.getX()][l.getY()] = true;
+        }
 
         // right
         for(int r=l.getY()+1; r<board.getWidth(); r++) {
@@ -82,6 +111,11 @@ public class Game {
         // verticalDown
         for(int d=l.getX()+1 ; d<board.getHeight(); d++) {
             if (blocks[d][l.getY()].equals(b) && blocks[d][l.getY()].canSelect() && blocks[d-1][l.getY()].equals(b)) range[d][l.getY()] = true;
+        }
+
+        // If an animal reach the land
+        for(int x=0; x<board.getWidth(); x++) {
+            if (blocks[5][x] instanceof AnimalBlock) range[5][x] = true;
         }
 
         return range;

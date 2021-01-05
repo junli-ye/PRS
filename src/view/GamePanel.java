@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -92,14 +93,16 @@ public class GamePanel extends JPanel {
 	 * Generate buttons with corresponding colors (or animals) for the specified block
 	 */
  	private JButton setColor(Block<?> B) {
- 		JButton tmp = new JButton();
-        JButton bl= new JButton(new ImageIcon("../img/blue.png"));
+
+		// import Files
+		JButton tmp = new JButton();
+		JButton bl= new JButton(new ImageIcon("../img/blue.png"));
 		JButton gr= new JButton(new ImageIcon("../img/green.jpeg"));
 		JButton or= new JButton(new ImageIcon("../img/orange.png"));
 		JButton re= new JButton(new ImageIcon("../img/red.jpeg"));
 		JButton ye= new JButton(new ImageIcon("../img/yellow.png"));
-		
-        JButton a= new JButton(new ImageIcon("../img/a.jpg"));
+
+		JButton a= new JButton(new ImageIcon("../img/a.jpg"));
 		JButton b= new JButton(new ImageIcon("../img/b.jpg"));
 		JButton c= new JButton(new ImageIcon("../img/c.jpg"));
 		JButton d= new JButton(new ImageIcon("../img/d.jpg"));
@@ -136,6 +139,17 @@ public class GamePanel extends JPanel {
  		g.print();
 	}
 
+	public void robotPlay() {
+ 		// random coordinate
+		Random rd = new Random();
+		int x = rd.nextInt(height);
+		int y = rd.nextInt(width);
+		// eliminate
+		clickedToEliminate(x,y);
+		this.updateUI();
+ 		isGameOver();
+	}
+
 	private void clickedToEliminate(int x, int y) {
 		EventQueue.invokeLater( () -> {
 			try{
@@ -145,9 +159,16 @@ public class GamePanel extends JPanel {
 				this.bu=new JButton[height][width];
 				this.addButton();
 			}catch (Exception ex) {
-				ex.printStackTrace();
+				new ErrorPanel();
 			}
 		});
+	}
+
+	static class ErrorPanel extends JPanel {
+		public ErrorPanel() {
+			String r = "bad! This block cannot be eliminated! Try another location";
+			JOptionPane.showMessageDialog(null, r, "BAD",JOptionPane.PLAIN_MESSAGE);
+		}
 	}
 }
 
