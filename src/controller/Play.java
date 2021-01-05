@@ -30,8 +30,13 @@ public class Play {
                 System.exit(0);
             }
             System.out.println("The coordinate where you want to eliminate is: "+x+","+y);
-            game.eliminate(x,y);
-            game.print();
+            try{
+                game.eliminate(x,y);
+            }catch (Exception e) {
+                System.out.println("Oooops! Something is wrong. Try again:)");
+            }finally {
+                game.print();
+            }
         }
     }
 

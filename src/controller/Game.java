@@ -60,9 +60,15 @@ public class Game {
         NormalBlock b = (NormalBlock)blocks[l.getX()][l.getY()];
 
         // self
-        if(blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)
-                || blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b))
-            range[l.getX()][l.getY()] = true;
+        if(l.getX() == 0 || l.getX() == 5) {
+            if (blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b)) range[l.getX()][l.getY()] = true;
+        }else if (l.getY() == 0 || l.getY() == 5) {
+            if (blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)) range[l.getX()][l.getY()] = true;
+        }else {
+            if(blocks[l.getX()+1][l.getY()].equals(b) || blocks[l.getX()-1][l.getY()].equals(b)
+                    || blocks[l.getX()][l.getY()+1].equals(b) || blocks[l.getX()][l.getY()-1].equals(b))
+                range[l.getX()][l.getY()] = true;
+        }
 
         // right
         for(int r=l.getY()+1; r<board.getWidth(); r++) {
@@ -82,6 +88,11 @@ public class Game {
         // verticalDown
         for(int d=l.getX()+1 ; d<board.getHeight(); d++) {
             if (blocks[d][l.getY()].equals(b) && blocks[d][l.getY()].canSelect() && blocks[d-1][l.getY()].equals(b)) range[d][l.getY()] = true;
+        }
+
+        // If an animal reach the land
+        for(int x=0; x<board.getWidth(); x++) {
+            if (blocks[5][x] instanceof AnimalBlock) range[5][x] = true;
         }
 
         return range;
